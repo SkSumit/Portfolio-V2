@@ -2,8 +2,9 @@ import Card from "./Card";
 
 import _ from "lodash";
 export default function CardRow({ projects }) {
+  console.log(projects);
   const chunkedProjectData = _.chunk(
-    projects.filter((project) => project.fields.Featured),
+    projects.filter((project) => project.featured),
     2
   );
 
