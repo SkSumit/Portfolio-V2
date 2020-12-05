@@ -2,17 +2,16 @@ import React from "react";
 import Icons from "./Icons";
 
 export default function Card({ project }) {
-  console.log(project);
   return (
     <div className="tile is-parent is-fixed-size">
       <div className="tile is-child box">
         <div className="columns is-multiline">
           <div className="column is-12">
-            <p className="title is-3">{project.fields["Project Name"]}</p>
+            <p className="title is-3">{project.name}</p>
           </div>
 
           <div className="column is-12">
-            {project.fields["Technology Used"].map((tech, index) => {
+            {project.techStack.map((tech, index) => {
               return (
                 <p className="tag mr-2 is-danger is-light" key={index}>
                   {tech}
@@ -23,11 +22,11 @@ export default function Card({ project }) {
 
           <div className="column is-12">
             <p className="subtitle is-5 has-text-weight-light is-family-secondary mt-2">
-              {project.fields.TagLine}
+              {project.description}
             </p>
 
-            {Icons("github", project.fields.Github)}
-            {project.fields.Demo && Icons("url", project.fields.Demo)}
+            {Icons("github", project.github)}
+            {project.url && Icons("url", project.url)}
           </div>
         </div>
       </div>
