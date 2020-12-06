@@ -1,9 +1,10 @@
 import Head from "next/head";
-
+import _ from "lodash";
 import fetchData, { fetchMediumPosts } from "../utils/api";
 import Intro from "../components/Intro";
 import Section from "../components/Section";
 import CardRow from "../components/CardRow";
+import dummyPosts from "../utils/dummyPosts";
 export default function Home(props) {
   return (
     <div>
@@ -14,12 +15,24 @@ export default function Home(props) {
 
       <Section>
         <Intro />
-        <CardRow projects={props.data} />
+        <CardRow data={props.data} projects={true} />
+
+        <h1 className="subtitle is-3 has-text-centered">
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href={"https://github.com/SkSumit?tab=repositories"}
+            className="subtitle is-3 has-text-centered"
+          >
+            See all of my projects 🚀
+          </a>
+        </h1>
       </Section>
       <Section>
         <h1 className="title is-3  ">
           ⚡ I write sometimes, checkout my blogs!
         </h1>
+        <CardRow data={_.concat(props.posts, dummyPosts)} projects={false} />
       </Section>
     </div>
   );
@@ -69,14 +82,7 @@ export async function getStaticProps(context) {
 //       </div>
 //     </div>
 //     <h1 className="subtitle is-3 has-text-centered">
-//       <a
-//         target="_blank"
-//         rel="noreferrer"
-//         href={"https://github.com/SkSumit?tab=repositories"}
-//         className="subtitle is-3 has-text-centered"
-//       >
-//         See all of my projects 🚀
-//       </a>
+
 //     </h1>
 //   </div>
 // </div>

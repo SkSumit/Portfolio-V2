@@ -33,3 +33,39 @@ export default function Card({ project }) {
     </div>
   );
 }
+
+export function CardPost({ post }) {
+  console.log(post);
+  return (
+    <a
+      target="_blank"
+      rel="noreferrer"
+      href={post.postURL}
+      className="tile is-parent is-fixed-size"
+    >
+      <div className="tile is-child box">
+        <div className="columns is-multiline">
+          <div className="column is-12">
+            <p className="title is-3">{post.title}</p>
+          </div>
+
+          <div className="column is-12">
+            {post.categories.map((category, index) => {
+              return (
+                <p className="tag mr-2 is-danger is-light" key={index}>
+                  {category}
+                </p>
+              );
+            })}
+          </div>
+
+          <div className="column is-12">
+            <figure className="image is-2by1">
+              <img src={post.thumbnail} />
+            </figure>
+          </div>
+        </div>
+      </div>
+    </a>
+  );
+}
