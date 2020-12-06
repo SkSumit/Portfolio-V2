@@ -1,13 +1,17 @@
-import Card from "./Card";
+import Card, { CardPost } from "./Card";
 
 import _ from "lodash";
-export default function CardRow({ projects }) {
-  console.log(projects);
-  const chunkedProjectData = _.chunk(
-    projects.filter((project) => project.featured),
-    2
-  );
-
+export default function CardRow({ data, projects }) {
+  const chunkedProjectData = projects
+    ? _.chunk(
+        data.filter((ele) => ele.featured),
+        2
+      )
+    : _.chunk(
+        data.filter((ele) => ele.title),
+        2
+      );
+  console.log(data);
   return (
     <div>
       {projects &&
@@ -16,6 +20,17 @@ export default function CardRow({ projects }) {
             <div className="tile is-parent " key={index}>
               {row.map((col, index) => {
                 return <Card project={col} key={index} />;
+              })}
+            </div>
+          );
+        })}
+
+      {!projects &&
+        chunkedProjectData.map((row, index) => {
+          return (
+            <div className="tile is-parent " key={index}>
+              {row.map((col, index) => {
+                return <CardPost post={col} key={index} />;
               })}
             </div>
           );
