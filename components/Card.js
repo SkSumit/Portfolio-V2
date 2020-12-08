@@ -35,7 +35,7 @@ export default function Card({ project }) {
 }
 
 export function CardPost({ post }) {
-  console.log(post);
+  
   return (
     <a
       target="_blank"
