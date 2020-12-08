@@ -11,7 +11,7 @@ export default function CardRow({ data, projects }) {
         data.filter((ele) => ele.title),
         2
       );
-  console.log(data);
+
   return (
     <div>
       {projects &&
